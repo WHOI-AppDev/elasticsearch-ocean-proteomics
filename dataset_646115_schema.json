@@ -1,0 +1,202 @@
+{
+  "ec-ocean-protein-portal":{
+    "mappings":{
+      "dataset_646115_v1":{
+        "properties":{
+          "_data_table_row":{
+            "properties":{
+              "value":{
+                "type": "integer"
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
+          },
+          "_coordinate":{
+            "type": "geo_point"
+          },
+          "cruise":{
+            "properties":{
+              "value":{
+                "type":"string"
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
+          },
+          "station":{
+            "properties":{
+              "value":{
+                "type":"string"
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
+          },
+          "lon": {
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "lat": {
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "depth":{
+            "type": "long",
+            "ignore_malformed": true
+          },
+          "ISO_DateTime":{
+            "type": "date"
+          },
+          "PO4":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "NO2_NO3":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "silicate":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "NO2":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "NH4":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "O2":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "NO3":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "protein":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "NiSOD_25":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "idiA_27":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "Fld_30":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "Fld_31":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "Fld_32":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "NRP_34":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "NtcA_35":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "PhoP_38":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "UreaT_39":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "UreaT_41":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "UreaT_42":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "UreaA_118":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "UreG_122":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "Sulfo_132":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "Sulfo_134":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "NH4_T_135":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "GS_144":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "GS_144":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "GS_Syn_146":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "Sulfo_171":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "PigDepth":{
+            "type": "long",
+            "ignore_malformed": true
+          },
+          "chl_a":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "dv_chl_a":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "fuco":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "zeax":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "PO4":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          "MgDVP":{
+            "type": "float",
+            "ignore_malformed": true
+          },
+          
+        }
+      }
+    }
+  }
+}
