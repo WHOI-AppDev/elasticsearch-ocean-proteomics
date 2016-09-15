@@ -40,161 +40,512 @@
             }
           },
           "lon": {
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "lat": {
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "depth":{
-            "type": "long",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "long",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "ISO_DateTime":{
-            "type": "date"
+            "properties":{
+              "value":{
+                "type": "date"
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "PO4":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "NO2_NO3":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "silicate":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "NO2":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "NH4":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "O2":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "NO3":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "protein":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "NiSOD_25":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "idiA_27":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              }
+            }
           },
           "Fld_30":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "Fld_31":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "Fld_32":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "NRP_34":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "NtcA_35":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "PhoP_38":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "UreaT_39":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "UreaT_41":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "UreaT_42":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "UreaA_118":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "UreG_122":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              }
+            }
           },
           "Sulfo_132":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "Sulfo_134":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "NH4_T_135":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "GS_144":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "GS_144":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "GS_Syn_146":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "Sulfo_171":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "PigDepth":{
-            "type": "long",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "long",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "chl_a":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "dv_chl_a":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "fuco":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "zeax":{
-            "type": "float",
-            "ignore_malformed": true
-          },
-          "PO4":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
           "MgDVP":{
-            "type": "float",
-            "ignore_malformed": true
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
           },
-          
+          "chl_c2":{
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
+          },
+          "peridinin":{
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
+          },
+          "but19":{
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
+          },
+          "hex19":{
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
+          },
+          "DD":{
+            "properties":{
+              "value":{
+                "type": "float",
+                "ignore_malformed": true
+              },
+              "uri":{
+                "type":"string",
+                "index":"not_analyzed"
+              }
+            }
+          }
         }
       }
     }
