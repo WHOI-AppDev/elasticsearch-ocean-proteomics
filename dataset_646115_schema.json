@@ -1,10 +1,4 @@
 {
-  "settings":{
-    "index":{
-      "number_of_shards" : 1, 
-      "number_of_replicas" : 0 
-    }
-  },
   "dataset_646115_v1":{
     "properties":{
       "_data_table_row":{
