@@ -1,0 +1,289 @@
+<html>
+  <head>
+    <!-- https://gist.github.com/ashepherd/129447f1c443a639f2505f9efe25fdb1 -->
+    <script type="text/javascript" src="facetview2/vendor/jquery/1.7.1/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" href="facetview2/vendor/bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="facetview2/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="facetview2/vendor/jquery-ui-1.8.18.custom/jquery-ui-1.8.18.custom.css">
+    <script type="text/javascript" src="facetview2/vendor/jquery-ui-1.8.18.custom/jquery-ui-1.8.18.custom.min.js"></script>
+    <script type="text/javascript" src="facetview2/es.js"></script>
+    <script type="text/javascript" src="facetview2/bootstrap2.facetview.theme.js"></script>
+    <script type="text/javascript" src="facetview2/jquery.facetview2.js"></script>
+    <link rel="stylesheet" href="facetview2/css/facetview.css">
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.1/handlebars.min.js"></script>
+
+    <!-- Load Leaflet from CDN-->
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css" />
+    <script src="http://cdn.jsdelivr.net/leaflet/0.7.3/leaflet.js"></script>
+    <script src="http://leaflet.github.io/Leaflet.label/leaflet.label.js"></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="http://cdn.jsdelivr.net/leaflet.esri/1.0.0/esri-leaflet.js"></script>
+
+    <link rel="stylesheet" href="//js.arcgis.com/3.14/esri/css/esri.css">
+    <script src="//js.arcgis.com/3.14/"></script>
+  </head>
+  <body>
+
+
+    <script id="dataset-template" type="text/x-handlebars-template">
+      <tr>
+        <td>
+          {{render}}
+        </td>
+      </tr>
+    </script>
+    <script type="text/javascript">
+
+      Handlebars.registerHelper('render', function() {
+
+          return JSON.stringify(this, null, 2);
+      });
+
+      var source = $("#dataset-template").html();
+      var template = Handlebars.compile(source);
+    </script>
+
+    <script type="text/javascript">
+      function renderResultRecord(options, record) {
+        return template(record).trim();
+      }
+
+      function buildMap() {
+        this.map = L.map('map');
+        L.esri.basemapLayer('Oceans').addTo(map);
+        L.esri.basemapLayer('OceansLabels').addTo(map);
+        map.fitWorld();
+      }
+
+      // https://www.elastic.co/guide/en/elasticsearch/reference/1.5/search-facets-terms-facet.html
+
+      //var es_url = 'http://test-prod.bco-dmo.org/elasticsearch/datafiles/529599/_search';
+      var es_url = 'http://localhost:9200/ec-ocean-protein-portal/dataset_646115_v1/_search';
+      jQuery(document).ready(function($) {
+        $('.facet-view-simple').facetview({
+          search_url: es_url,
+          page_size: 500,
+          sort: [{"_id" : {"order" : "asc"}}],
+          search_sortby: [{'display':'Dataset','field':'_id'}],
+          default_freetext_fuzzify: "*",
+          default_facet_operator: "AND",
+          default_facet_order: "term",
+          default_facet_size: 20,
+          facets: [
+             {'field': 'cruise.value', 'display': 'Cruise', 'size': 3000},
+             {'field': 'station.value', 'display': 'Station', 'size': 3000},
+             {'field': 'depth.value', 'display': 'Depth', 'size': 3000}
+          ],
+          /*
+          pre_search_callback : function(options, context) {
+            console.log(options.active_filters);
+          },
+          */
+          post_init_callback: function(options, context) {
+            // Render the map view using Leaflet
+              $(".facetview_searching")
+                  .after("<div class='facetview_map'><div id=\"map\"></div></div>");
+          },
+          post_render_callback: function(options, context) {
+
+              $("#map").children().remove();
+
+            var map;
+
+            require([
+                "esri/map",
+                "esri/layers/FeatureLayer",
+                "esri/dijit/PopupTemplate",
+                "esri/geometry/Point",
+                "esri/graphic",
+                "dojo/on",
+                "dojo/_base/array",
+                "dojo/domReady!"
+            ], function(Map, FeatureLayer, PopupTemplate, Point, Graphic, on, array) {
+
+                map = new Map("map", {
+                    basemap: "oceans",
+                    center: [0, 0],
+                    zoom: 2
+                });
+
+                // Hide the popup if its outside the map's extent
+                map.on("mouse-drag", function(evt) {
+                    if (map.infoWindow.isShowing) {
+                        var loc = map.infoWindow.getSelectedFeature().geometry;
+                        if (!map.extent.contains(loc)) {
+                            map.infoWindow.hide();
+                        }
+                    }
+                });
+
+                var featureCollection = {
+                    "layerDefinition": null,
+                    "featureSet": {
+                        "features": [],
+                        "geometryType": "esriGeometryPoint"
+                    }
+                };
+                featureCollection.layerDefinition = {
+                    "geometryType": "esriGeometryPoint",
+                    "fieldStudyectIdField": "fieldStudyectID",
+                    "drawingInfo": {
+                        "renderer": {
+                            "type": "simple",
+                            "symbol": {
+                              "type": "esriPMS",
+                              "url" : "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FE7569",
+                              "imageData" : null,
+                              "contentType" : "image/png",
+                              "color" : null,
+                              "width" : 21,
+                              "height" : 34,
+                              "angle" : 0,
+                              "xoffset" : 0,
+                              "yoffset" : 0
+                            }
+                            /*
+                            "symbol": {
+                                "type": "esriSMS",
+                                "style": "esriSMSDiamond",
+                                "size": 15,
+                                "color": [255, 0, 0, 255],
+                                "outline": {
+                                    "color": [255, 255, 255, 255],
+                                    "width": 1,
+                                    "type": "esriSLS",
+                                    "style": "esriSLSSolid"
+                                }
+                            }
+                            */
+                        }
+                    },
+                    "fields": [{
+                        "name": "fieldStudyectID",
+                        "alias": "fieldStudyectID",
+                        "type": "esriFieldTypeOID"
+                    }, {
+                        "name": "title",
+                        "alias": "Title",
+                        "type": "esriFieldTypeString"
+                    }, {
+                        "name": "description",
+                        "alias": "Description",
+                        "type": "esriFieldTypeString"
+                    }]
+                };
+
+                // Define a popup template
+                var popupTemplate = new PopupTemplate({
+                    title: "{title}",
+                    description: "{description}"
+                });
+
+                // Create a feature layer based on the feature collection
+                var featureLayer = new FeatureLayer(featureCollection, {
+                    id: 'fieldSitesLayer',
+                    infoTemplate: popupTemplate
+                });
+                // Associate the features with the popup on click
+                featureLayer.on("click", function(evt) {
+                    map.infoWindow.setFeatures([evt.graphic]);
+                });
+
+                map.on("layers-add-result", function(results) {
+                    renderPopups();
+                });
+                map.addLayers([featureLayer]);
+
+                function renderPopups() {
+                  var records = options.data.records;
+                  var features = new Array();
+                  var extent;
+                  for (var i = 0; i < records.length; i++) {
+                    var row = records[i];
+                    var popup = $("<div>Row</div>");
+                    var attr = {};
+                    attr["title"] = "<span>Row</span>";
+                    attr["description"] = "<span>" + JSON.stringify(row, null, 2) + "</span>"; //popup.html();
+
+                    var geometry = new Point(parseFloat(row._coordinate.lon), parseFloat(row._coordinate.lat));
+                    var graphic = new Graphic(geometry);
+                    graphic.setAttributes(attr);
+                    features.push(graphic);
+
+                    var ymin = parseFloat(row._coordinate.lat) + 1;
+                    var ymax = parseFloat(row._coordinate.lat) - 1;
+                    var xmin = parseFloat(row._coordinate.lon) + 1;
+                    var xmax = parseFloat(row._coordinate.lon) - 1;
+                    ext = new esri.geometry.Extent({
+                      "xmin":xmin,"ymin":ymin,"xmax":xmax,"ymax":ymax,"spatialReference":{"wkid":4326}});
+                    if (extent) {
+                      extent = extent.union(ext);
+                    } else {
+                      extent = new esri.geometry.Extent(ext);
+                    }
+                  }
+                  featureLayer.applyEdits(features, null, null);
+                  featureLayer.refresh();
+
+                  // Zoom
+                  extent = extent.expand(2);
+                  map.setExtent(extent.getExtent());
+                }
+            });
+          },
+          render_result_record: renderResultRecord,
+          search_button: true,
+          selected_filters_in_facet: true,
+          sharesave_link: true,
+          show_filter_field : true,
+          show_filter_logic: true,
+        });
+      });
+    </script>
+    <style type="text/css">
+      .facet-view-simple {
+        padding: 25px;
+      }
+      .facetview_decrement, .facetview_increment {
+        cursor: pointer;
+      }
+
+      .esriControlsBR {
+        display: none;
+      }
+
+      .dataset-not-mapped {
+        font-size: smaller;
+      }
+
+      #map {
+          width: 100%;
+          height: 600px;
+          margin-bottom: 20px;
+      }
+
+      .esriViewPopup p {
+          margin: 0;
+          font-size: 10px;
+          line-height: 12px;
+          text-indent: 0;
+      }
+
+      .esriViewPopup .hzLine {
+          border: none;
+          margin: 0;
+      }
+
+      .esriViewPopup .header {
+          background-color: white;
+      }
+
+      .esriPopup .title {
+          color: white;
+      }
+    </style>
+    <div class="facet-view-simple"></div>
+  </body>
+</html>
